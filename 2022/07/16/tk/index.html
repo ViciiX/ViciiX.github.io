@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"viciix.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="这篇文章主要介绍1.如何获取一个免费一级域名2.如何为 Github 上的 Hexo博客 绑定获取的域名">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为Hexo博客添加一级域名">
+<meta property="og:url" content="https://viciix.github.io/2022/07/16/tk/index.html">
+<meta property="og:site_name" content="ViciiX 的 博客">
+<meta property="og:description" content="这篇文章主要介绍1.如何获取一个免费一级域名2.如何为 Github 上的 Hexo博客 绑定获取的域名">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.328888.xyz/2022/07/16/NTNk6.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/07/16/NTLlP.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/07/16/NTlJX.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/07/16/NTmWI.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/07/16/NTFBj.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/07/16/NTOPr.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/07/16/NTjYK.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/07/16/NT00m.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/07/16/NTGBg.png">
+<meta property="og:image" content="https://s2.loli.net/2022/07/16/wTfgakvZJB59nId.png">
+<meta property="article:published_time" content="2022-07-16T04:27:11.000Z">
+<meta property="article:modified_time" content="2022-07-16T06:13:32.000Z">
+<meta property="article:author" content="ViciiX">
+<meta property="article:tag" content="windows">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="githubPages">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.328888.xyz/2022/07/16/NTNk6.png">
+
+<link rel="canonical" href="https://viciix.github.io/2022/07/16/tk/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>为Hexo博客添加一级域名 | ViciiX 的 博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ViciiX 的 博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">hello, world</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://viciix.github.io/2022/07/16/tk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ViciiX">
+      <meta itemprop="description" content="一个萌新的博客qwq">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ViciiX 的 博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          为Hexo博客添加一级域名
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-16 12:27:11 / 修改时间：14:13:32" itemprop="dateCreated datePublished" datetime="2022-07-16T12:27:11+08:00">2022-07-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B/%E5%BB%BA%E7%AB%99/" itemprop="url" rel="index"><span itemprop="name">建站</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/07/16/tk/" class="post-meta-item leancloud_visitors" data-flag-title="为Hexo博客添加一级域名" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/07/16/tk/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/07/16/tk/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>这篇文章主要介绍<br>1.如何获取一个免费一级域名<br>2.如何为 <strong>Github</strong> 上的 <strong>Hexo博客</strong> 绑定获取的域名</p>
+<span id="more"></span>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文章均由PC端做示范，由于设备能力有限，截图会有亿点糊，请见谅</p>
+<h1 id="需要用到"><a href="#需要用到" class="headerlink" title="需要用到"></a>需要用到</h1><ul>
+<li>一个已能通过xxx.github.io访问的博客</li>
+<li>脑子</li>
+<li>(备选)科学上网工具、Google账号</li>
+</ul>
+<h1 id="1-获取免费一级域名"><a href="#1-获取免费一级域名" class="headerlink" title="1.获取免费一级域名"></a>1.获取免费一级域名</h1><p>最容易获取的免费一级域名就是 <strong>.tk</strong> 域名了，至于它的来历，为什么免费，百度上都可以查到，这里就不多赘述。</p>
+<p>打开 <strong><a target="_blank" rel="noopener" href="https://www.freenom.com/">Freenom网站</a></strong> ，裸连有亿点慢所以最好科学上网<br><img src="https://s1.328888.xyz/2022/07/16/NTNk6.png"></p>
+<p>先看看你想获取的域名是否可用，搜索你想获取的域名，这里用 <strong>vexample</strong> 示范</p>
+<p><img src="https://s1.328888.xyz/2022/07/16/NTLlP.png"></p>
+<p>如图，如果直接搜索名字会提示不可用，加上域名即可</p>
+<p><img src="https://s1.328888.xyz/2022/07/16/NTlJX.png"></p>
+<p>随后选择12个月的免费，到期了之后可以再买）</p>
+<p><img src="https://s1.328888.xyz/2022/07/16/NTmWI.png"></p>
+<p>然后登陆&#x2F;注册一下</p>
+<p><img src="https://s1.328888.xyz/2022/07/16/NTFBj.png"></p>
+<p>过程可能还要填地址什么的，就那样填 <del>貌似没什么影响</del><br>最后点击 <strong>Services –&gt; My Domains</strong> ，能看到购买的域名就说明你已经获取成功了<br><img src="https://s1.328888.xyz/2022/07/16/NTOPr.png"></p>
+<h1 id="2-DNS解析"><a href="#2-DNS解析" class="headerlink" title="2.DNS解析"></a>2.DNS解析</h1><p>有了域名，接下来就要让他发挥作用，这里我们用 <strong><a href="cloudflare.com">Cloudflare</a></strong> 来进行dns解析</p>
+<p>注册登录一波后，点击 <strong>添加站点</strong><br><img src="https://s1.328888.xyz/2022/07/16/NTjYK.png"></p>
+<p>随后输入你刚刚在freenom上获取的域名，回车<br>往下滑，选择那个$0的白嫖方案<br><img src="https://s1.328888.xyz/2022/07/16/NT00m.png"></p>
+<p>然后就是最关键的一步，首先获取hexo博客的服务器ip，可以在 <strong><a target="_blank" rel="noopener" href="https://tool.lu/ip/">https://tool.lu/ip/</a></strong> 里输入<br>xxx.github.io来查询<br><img src="https://s1.328888.xyz/2022/07/16/NTGBg.png"></p>
+<p>然后点击 <strong>“添加记录”</strong>  ，添加2条</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>IPv4地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>www</td>
+<td>刚刚获取的ip地址</td>
+</tr>
+<tr>
+<td>A</td>
+<td>@</td>
+<td>刚刚获取的ip地址</td>
+</tr>
+<tr>
+<td>每条都是编辑好后点击右下角的保存按钮，2条全都保存后点击“继续”</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="3-部署域名"><a href="#3-部署域名" class="headerlink" title="3.部署域名"></a>3.部署域名</h1><p>点击继续后会提示“更改您的名称服务器”，我们先打开 <strong><a href="my.freenom.com">之前freenom的页面</a></strong> 同样点击 <strong>Services –&gt; My Domains</strong> ，点击域名右侧的 <strong>Manage Domain</strong> 进入域名管理界面<br><img src="https://s2.loli.net/2022/07/16/wTfgakvZJB59nId.png"></p>
+<p>切换为 <strong>Use custom nameservers (enter below)</strong> ，随后将cloudflare给出的名称服务器复制进去，点击 <strong>Change nameservers</strong>，然后在cluodflare那边点击 <strong>完成，检查名称服务器</strong> </p>
+<h1 id="4-部署Github"><a href="#4-部署Github" class="headerlink" title="4.部署Github"></a>4.部署Github</h1><p>因为Hexo每次上传都会将库内覆盖掉，所以需要在博客根目录的&#x2F;source文件夹内新建一个名为 <strong>CNAME</strong> 的文件，内容就是你的域名</p>
+<h1 id="5-完成！"><a href="#5-完成！" class="headerlink" title="5.完成！"></a>5.完成！</h1><p>最后，在hexo clean,hexo g,hexo d等一顿操作后，你就可以通过你的域名访问你的博客了！</p>
+<h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><p>如果本网的图片出现了问题，请联系站长<br>如果本文内容有待修改，请在下方评论<br>谢谢！</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/windows/" rel="tag"># windows</a>
+              <a href="/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/tags/githubPages/" rel="tag"># githubPages</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0"><span class="nav-number">2.</span> <span class="nav-text">需要用到</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E8%8E%B7%E5%8F%96%E5%85%8D%E8%B4%B9%E4%B8%80%E7%BA%A7%E5%9F%9F%E5%90%8D"><span class="nav-number">3.</span> <span class="nav-text">1.获取免费一级域名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-DNS%E8%A7%A3%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">2.DNS解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E9%83%A8%E7%BD%B2%E5%9F%9F%E5%90%8D"><span class="nav-number">5.</span> <span class="nav-text">3.部署域名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E9%83%A8%E7%BD%B2Github"><span class="nav-number">6.</span> <span class="nav-text">4.部署Github</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E5%AE%8C%E6%88%90%EF%BC%81"><span class="nav-number">7.</span> <span class="nav-text">5.完成！</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tips"><span class="nav-number">8.</span> <span class="nav-text">Tips</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ViciiX</p>
+  <div class="site-description" itemprop="description">一个萌新的博客qwq</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ViciiX</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'UlrRXO4A9pvh80Rcqhhfi84P-gzGzoHsz',
+      appKey     : 'WenzITk0HNXT1LRv8kLku0hR',
+      placeholder: "发表对这篇文章的看法",
+      avatar     : '',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
