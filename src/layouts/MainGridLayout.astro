@@ -125,53 +125,56 @@ const mainPanelTop = siteConfig.banner.enable
 
 <!-- Random Banner -->
 <script>  
-    async function applyRandomBanner() {  
-        try {  
-            const res = await fetch('/images/website/banners/banner.json');  
-            const banners = await res.json();  
-            if (!banners || banners.length === 0) return;  
-    
-            const banner = banners[Math.floor(Math.random() * banners.length)];  
-    
-            // 更新 banner 图片 src   
-            const img = document.querySelector('#banner img') as HTMLImageElement;  
-            if (img && banner.src) {  
-            img.src = banner.src;  
-            //设置渲染方式
-            img.style.imageRendering = banner.rendering || 'auto';  
+    async function applyRandomBanner() {
+        try {
+            let banner;
+            const stored = sessionStorage.getItem('currentBanner');
+
+            if (stored) {
+                // 同一个 tab 会话内，复用已选的 banner  
+                banner = JSON.parse(stored);
+            } else {
+                // 首次加载（或新 tab）才随机选取  
+                const res = await fetch('/images/website/banners/banner.json');
+                const banners = await res.json();
+                if (!banners || banners.length === 0) return;
+                banner = banners[Math.floor(Math.random() * banners.length)];
+                sessionStorage.setItem('currentBanner', JSON.stringify(banner));
             }
-    
-            // 更新 hue（覆盖 localStorage 中的值）  
-            if (banner.hue !== undefined) {  
-                localStorage.setItem('hue', String(banner.hue));  
+
+            // 更新 banner 图片  
+            const img = document.querySelector('#banner img') as HTMLImageElement;
+            if (img && banner.src) {
+                img.src = banner.src;
+                img.style.imageRendering = banner.rendering || 'auto';
+            }
+
+            // 更新 hue（同时写入 localStorage，防止 DisplaySettings.svelte 覆盖）  
+            if (banner.hue !== undefined) {
+                localStorage.setItem('hue', String(banner.hue));
                 document.documentElement.style.setProperty('--hue', String(banner.hue));
-            }  
-    
+            }
+
             // 更新 credit  
-            const creditEl = document.getElementById('banner-credit') as HTMLAnchorElement;  
-            if (creditEl) {  
-                const textEl = creditEl.querySelector('div');  
-                if (textEl) textEl.textContent = banner.credit?.text || '';  
-                if (banner.credit?.url) {  
-                    creditEl.setAttribute('href', banner.credit.url);  
-                    creditEl.classList.remove('pointer-events-none');  
-                } else {  
-                    creditEl.setAttribute('href', '#');  
-                    creditEl.classList.add('pointer-events-none');  
-                }  
-                // 有 credit text 才显示  
-                if (banner.credit?.text) {  
-                    creditEl.classList.remove('hidden');  
-                } else {  
-                    creditEl.classList.add('hidden');  
-                }  
-            }  
-        } catch (e) {  
-            console.error('Failed to load banner config:', e);  
-        }  
-    }  
-    
-    applyRandomBanner();  
+            const creditEl = document.getElementById('banner-credit') as HTMLAnchorElement;
+            if (creditEl) {
+                const textEl = creditEl.querySelector('div');
+                if (textEl) textEl.textContent = banner.credit?.text || '';
+                if (banner.credit?.url) {
+                    creditEl.setAttribute('href', banner.credit.url);
+                    creditEl.classList.remove('pointer-events-none');
+                } else {
+                    creditEl.setAttribute('href', '#');
+                    creditEl.classList.add('pointer-events-none');
+                }
+                creditEl.classList.toggle('hidden', !banner.credit?.text);
+            }
+        } catch (e) {
+            console.error('Failed to load banner config:', e);
+        }
+    }
+
+    applyRandomBanner();
 </script>
 
 </Layout>
