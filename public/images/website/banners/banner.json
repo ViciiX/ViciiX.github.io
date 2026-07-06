@@ -1,0 +1,29 @@
+[
+  {
+    "src": "/images/website/banners/shizuku_leaf.png",
+    "hue": 40,
+    "rendering": "pixelated", 
+    "credit": {
+      "text": "月岛琉璃子 - 雫 しずく - Leaf 1996",
+      "url": "https://leaf.aquaplus.jp/product/sizuku/"
+    }
+  },
+  {
+    "src": "/images/website/banners/lain.png",
+    "hue": 200,
+    "rendering": "auto", 
+    "credit": {
+      "text": "岩仓玲音(Lain) - Serial Experiments Lain - Production 2nd 1998",
+      "url": "https://www.nbcuni.co.jp/rondorobe/anime/lain/"
+    }
+  },
+  {
+    "src": "/images/website/banners/azumangadaioh.png",
+    "hue": 150,
+    "rendering": "auto", 
+    "credit": {
+      "text": "榊 & 千代爸爸 - 阿兹漫画大王 - 东清彦 1999",
+      "url": "https://ssl.jcstaff.co.jp/sakuhin/nenpyo/2002/01_azumanga/azumanga.htm"
+    }
+  }
+]
