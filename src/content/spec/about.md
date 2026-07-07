@@ -6,10 +6,9 @@
 
 ## ✨ 关于我
 
-<img src="https://avatars.githubusercontent.com/u/73730269" align="right" width=240, class="rounded-lg">
-
 <div style="padding-left: 2em; margin-left: 0;">
-<p>你好，我是<b title="VcX、维西克斯">ViciiX</b> :)</p>
+<img src="https://avatars.githubusercontent.com/u/73730269" class="about-avatar">
+<p class="mobile-center">你好，我是<b title="VcX、维西克斯">ViciiX</b> :)</p>
 <b>我的兴趣爱好：</b>
 <ul>
 <li title="ACGN">动画,漫画,游戏,小说</li>

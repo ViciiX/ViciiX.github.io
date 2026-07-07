@@ -60,7 +60,7 @@ const mainPanelTop = siteConfig.banner.enable
 </div>}
 
 <!-- Main content -->
-<div class="absolute w-full z-30 pointer-events-none" style={`top: ${mainPanelTop}`}>
+<div id="main-panel" class="absolute w-full z-30 pointer-events-none" style={`top: ${mainPanelTop}`}>
     <!-- The pointer-events-none here prevent blocking the click event of the TOC -->
     <div class="relative max-w-[var(--page-width)] mx-auto pointer-events-auto">
         <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-[17.5rem_auto] grid-rows-[auto_1fr_auto] lg:grid-rows-[auto]
@@ -142,7 +142,7 @@ const mainPanelTop = siteConfig.banner.enable
                 document.documentElement.setAttribute('data-banner-initialized', 'true');  
     
                 // F5 刷新时清除缓存，强制重新随机  
-                const navType = performance.getEntriesByType('navigation')[0]?.type;  
+                const navType = (performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming)?.type;
                 if (navType === 'reload') {  
                     sessionStorage.removeItem('currentBanner');  
                 }  
@@ -193,5 +193,21 @@ const mainPanelTop = siteConfig.banner.enable
     
     applyRandomBanner();  
 </script>
+
+<style>
+    @media (max-width: 768px) {
+        #main-panel {
+            top: calc(75vh - 3.5rem) !important;
+        }
+
+        #banner-wrapper {
+            height: 100vh !important;
+        }
+
+        #banner {
+            height: 100vh !important;
+        }
+    }
+</style>
 
 </Layout>
