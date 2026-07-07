@@ -76,7 +76,7 @@ export const profileConfig: ProfileConfig = {
 		},
 		{
 			name: "网易云音乐",
-			icon: "fa6-brands:neteasecloudmusic",
+			icon: "simple-icons:neteasecloudmusic",
 			url: "https://music.163.com/#/artist?id=122971414",
 		},
 	],
