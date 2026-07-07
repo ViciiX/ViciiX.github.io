@@ -127,24 +127,49 @@ const mainPanelTop = siteConfig.banner.enable
 <script>  
     async function applyRandomBanner() {  
         try {  
-            const res = await fetch('/images/website/banners/banner.json');  
-            const banners = await res.json();  
-            if (!banners || banners.length === 0) return;  
+            // 检测是否为 Swup 导航（<html> 上的标记在 Swup 导航中持久存在）  
+            const isSwupNavigation = document.documentElement.hasAttribute('data-banner-initialized');  
     
-            const banner = banners[Math.floor(Math.random() * banners.length)];  
+            let banner;  
     
-            // 更新 banner 图片 src   
+            if (isSwupNavigation) {  
+                // Swup 导航：直接复用已存储的 banner，不重新随机  
+                const stored = sessionStorage.getItem('currentBanner');  
+                if (!stored) return;  
+                banner = JSON.parse(stored);  
+            } else {  
+                // 完整页面加载（新标签页、F5、直接输入 URL）  
+                document.documentElement.setAttribute('data-banner-initialized', 'true');  
+    
+                // F5 刷新时清除缓存，强制重新随机  
+                const navType = performance.getEntriesByType('navigation')[0]?.type;  
+                if (navType === 'reload') {  
+                    sessionStorage.removeItem('currentBanner');  
+                }  
+    
+                const stored = sessionStorage.getItem('currentBanner');  
+                if (stored) {  
+                    banner = JSON.parse(stored);  
+                } else {  
+                    const res = await fetch('/images/website/banners/banner.json');  
+                    const banners = await res.json();  
+                    if (!banners || banners.length === 0) return;  
+                    banner = banners[Math.floor(Math.random() * banners.length)];  
+                    sessionStorage.setItem('currentBanner', JSON.stringify(banner));  
+                }  
+            }  
+    
+            // 更新 banner 图片  
             const img = document.querySelector('#banner img') as HTMLImageElement;  
             if (img && banner.src) {  
-            img.src = banner.src;  
-            //设置渲染方式
-            img.style.imageRendering = banner.rendering || 'auto';  
-            }
+                img.src = banner.src;  
+                img.style.imageRendering = banner.rendering || 'auto';  
+            }  
     
-            // 更新 hue（覆盖 localStorage 中的值）  
+            // 更新 hue（同时写入 localStorage，防止 DisplaySettings.svelte 覆盖）  
             if (banner.hue !== undefined) {  
                 localStorage.setItem('hue', String(banner.hue));  
-                document.documentElement.style.setProperty('--hue', String(banner.hue));
+                document.documentElement.style.setProperty('--hue', String(banner.hue));  
             }  
     
             // 更新 credit  
@@ -159,12 +184,7 @@ const mainPanelTop = siteConfig.banner.enable
                     creditEl.setAttribute('href', '#');  
                     creditEl.classList.add('pointer-events-none');  
                 }  
-                // 有 credit text 才显示  
-                if (banner.credit?.text) {  
-                    creditEl.classList.remove('hidden');  
-                } else {  
-                    creditEl.classList.add('hidden');  
-                }  
+                creditEl.classList.toggle('hidden', !banner.credit?.text);  
             }  
         } catch (e) {  
             console.error('Failed to load banner config:', e);  
