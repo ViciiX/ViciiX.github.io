@@ -151,12 +151,11 @@
   }
 }
 
-/* #navbar .card-base {
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+.wl-count {
+  color: var(--deep-text, #333);
 }
 
-html.dark #navbar .card-base {
-  background-color: rgba(28, 28, 30, 0.5);
-} */
+/* 暗色模式：当 html 有 dark class 时 */
+.dark .wl-count {
+  color: #ddd;
+}

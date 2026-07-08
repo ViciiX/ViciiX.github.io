@@ -47,6 +47,7 @@ const jsonLd = {
 ---
 <MainGridLayout banner={entry.data.image} title={entry.data.title} description={entry.data.description} lang={entry.data.lang} setOGTypeArticle={true} headings={headings}>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" slot="head">
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
         <div id="post-container" class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full ",
             {}
@@ -139,5 +140,51 @@ const jsonLd = {
             </div>}
         </a>
     </div>
+
+    <!-- 评论区 -->
+    <div id="waline-container" class="card-base px-6 md:px-9 py-6 mb-4 rounded-[var(--radius-large)]">
+        <div id="waline"></div>
+    </div>
+
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+
+        let walineInstance = null;
+
+        function mountWaline() {
+            const container = document.getElementById('waline');
+            if (!container) return;
+
+            // 如果已有实例，先销毁再重新创建
+            if (walineInstance) {
+            walineInstance.destroy();
+            walineInstance = null;
+            }
+
+            walineInstance = init({
+            el: '#waline',
+            serverURL: 'https://vcxwaline.vercel.app/',
+            lang: 'zh-CN',
+            pageview: true,
+            // 适配 Fuwari 深色模式（data-theme="github-dark"）
+            dark: 'html.dark',
+            });
+        }
+
+        // 首次加载
+        mountWaline();
+
+        // 监听 Swup 页面切换完成事件
+        // Fuwari 使用 Swup，切换页面后会触发此事件
+        document.addEventListener('swup:contentReplaced', () => {
+            // 容器可能被替换，需要重新挂载
+            mountWaline();
+        });
+
+        // 兜底：如果使用的是其他事件名，也监听
+        document.addEventListener('swup:page:view', () => {
+            mountWaline();
+        });
+    </script>
 
 </MainGridLayout>
