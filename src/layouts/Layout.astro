@@ -375,6 +375,14 @@ function init() {
 	loadHue();
 	initCustomScrollbar();
 	showBanner();
+
+	// 不蒜子
+	const checkBusuanzi = setInterval(() => {
+        if (typeof (window as any).busuanzi !== 'undefined' && (window as any).busuanzi.fetch) {
+            (window as any).busuanzi.fetch();
+            clearInterval(checkBusuanzi);
+        }
+    }, 100);
 }
 
 /* Load settings when entering the site */
@@ -425,6 +433,14 @@ const setup = () => {
 		if (heightExtend) {
 			heightExtend.classList.remove('hidden')
 		}
+
+		// 不蒜子
+		const checkBusuanzi = setInterval(() => {
+			if (typeof (window as any).busuanzi !== 'undefined' && (window as any).busuanzi.fetch) {
+				(window as any).busuanzi.fetch();
+				clearInterval(checkBusuanzi);
+			}
+		}, 100);
 
 		// Hide the TOC while scrolling back to top
 		let toc = document.getElementById('toc-wrapper');
