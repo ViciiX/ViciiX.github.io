@@ -109,8 +109,8 @@ const bannerOffset =
 			/>
 		))}
 
-		<!-- 不蒜子 -->
-		<script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer></script>
+		<!-- Vercount -->
+		<script defer src="https://events.vercount.one/js"></script>
 
 		<!-- Set the theme before the page is rendered to avoid a flash -->
 		<script is:inline define:vars={{DEFAULT_THEME, LIGHT_MODE, DARK_MODE, AUTO_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
@@ -375,14 +375,6 @@ function init() {
 	loadHue();
 	initCustomScrollbar();
 	showBanner();
-
-	// 不蒜子
-	const checkBusuanzi = setInterval(() => {
-        if (typeof (window as any).busuanzi !== 'undefined' && (window as any).busuanzi.fetch) {
-            (window as any).busuanzi.fetch();
-            clearInterval(checkBusuanzi);
-        }
-    }, 100);
 }
 
 /* Load settings when entering the site */
@@ -433,14 +425,6 @@ const setup = () => {
 		if (heightExtend) {
 			heightExtend.classList.remove('hidden')
 		}
-
-		// 不蒜子
-		const checkBusuanzi = setInterval(() => {
-			if (typeof (window as any).busuanzi !== 'undefined' && (window as any).busuanzi.fetch) {
-				(window as any).busuanzi.fetch();
-				clearInterval(checkBusuanzi);
-			}
-		}, 100);
 
 		// Hide the TOC while scrolling back to top
 		let toc = document.getElementById('toc-wrapper');
