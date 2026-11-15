@@ -5,7 +5,7 @@ description: '关于如何实现CharacterBody2D节点间推挤碰撞的学习经
 image: ''
 tags: ['Godot', '2D', '实践']
 category: 'Godot'
-draft: true
+draft: false
 lang: 'zh-CN'
 ---
 <center><a href='#最终方案-运用物理知识'>[省流]一键查看最终方案</a></center>
