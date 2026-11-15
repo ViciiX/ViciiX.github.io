@@ -134,7 +134,8 @@ Fly	(0.0, -100.0)	(0.0, -3.857116)
 velocity += normal * collider.velocity.length() * (collider.mass/total_mass)
 ```
 <img src="/images/posts/godot/2d-character-push-learning-experience/second_try.webp" loading="lazy">
-发现推动时有段落感，使用`printt(name, collider.name, normal, collider.velocity.length())`打印出信息，发现以下片段  
+
+发现推动时有段落感，使用 `printt(name, collider.name, normal, collider.velocity.length())` 打印出信息，发现以下片段  
 
 ```text
 Fly_1	Qu	(0.0, -1.0)	99.8492660522461
@@ -159,10 +160,10 @@ Qu	Fly_1	(0.0, 1.0)	85.7720489501953
 #velocity += normal * collider.velocity.length() * (collider.mass/total_mass)
 collider.velocity -= normal * velocity.length() * (mass/total_mass)
 ```
-<img src="/images/posts/godot/2d-character-push-learning-experience/third_try.webp" loading="lazy">
-发现碰撞时施加的速度明显变大了，而且还出现了类似爆炸的效果，这种效果在多个怪物追逐玩家时更为明显:
-<img src="/images/posts/godot/2d-character-push-learning-experience/third_try_2.webp" loading="lazy">
-原因其实很简单，两个实体的碰撞体积重合时双方都会不断向对方施加速度，叠加起来就形成了一个巨大的值；多个怪物挤压玩家时，每个怪物施加的速度都会叠加在玩家身上，导致了“爆炸”的现象。
+<img src="/images/posts/godot/2d-character-push-learning-experience/third_try.webp" loading="lazy">  
+发现碰撞时施加的速度明显变大了，而且还出现了类似爆炸的效果，这种效果在多个怪物追逐玩家时更为明显:  
+<img src="/images/posts/godot/2d-character-push-learning-experience/third_try_2.webp" loading="lazy">  
+原因其实很简单，两个实体的碰撞体积重合时双方都会不断向对方施加速度，叠加起来就形成了一个巨大的值；多个怪物挤压玩家时，每个怪物施加的速度都会叠加在玩家身上，导致了“爆炸”的现象。  
 
 <hr />
 
