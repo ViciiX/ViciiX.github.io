@@ -3,11 +3,15 @@ import type { MarkdownHeading } from "astro";
 import Categories from "./Categories.astro";
 import Profile from "./Profile.astro";
 import Tag from "./Tags.astro";
+import TOC from "./TOC.astro";
+import { siteConfig } from "../../config";
 
 interface Props {
 	class?: string;
 	headings?: MarkdownHeading[];
 }
+
+const { headings = [] } = Astro.props; 
 
 const className = Astro.props.class;
 ---
@@ -15,8 +19,24 @@ const className = Astro.props.class;
     <div class="flex flex-col w-full gap-4 mb-4">
         <Profile></Profile>
     </div>
-    <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 top-4 sticky top-4">
-        <Categories class="onload-animation" style="animation-delay: 150ms"></Categories>
-        <Tag class="onload-animation" style="animation-delay: 200ms"></Tag>
+
+        <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 top-20 sticky">
+        
+        <div class="shrink-0 flex flex-col gap-4">
+            <Categories class="onload-animation" style="animation-delay: 150ms"></Categories>
+            <Tag class="onload-animation" style="animation-delay: 200ms"></Tag>
+        </div>
+
+        {headings.length > 0 && (
+            <div class="w-full transition-swup-fade">
+                <div class="card-base rounded-2xl overflow-hidden">
+                    <div id="toc-inner-wrapper" class="max-h-[50vh] overflow-y-auto hide-scrollbar p-4">
+                        <div id="toc" class="w-full">
+                            <TOC headings={headings} />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )}
     </div>
 </div>

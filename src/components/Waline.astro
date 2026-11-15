@@ -1,0 +1,42 @@
+import '@waline/client/style'; // 本地导入样式，替代 unpkg 的 <link>
+
+<div class="waline-wrapper card-base px-6 md:px-9 py-6 mb-4 rounded-[var(--radius-large)]">
+  <div id="waline"></div>
+</div>
+
+<script>
+  import { init, type WalineInstance } from '@waline/client';
+
+  const walineConfig = {
+    serverURL: 'https://vcxwaline.vercel.app/',
+    dark: 'html.dark',
+    emoji: [
+      'https://s4.zstatic.net/npm/@waline/emojis@1.1.0/bilibili',
+    ],
+  };
+
+  let walineInstance: WalineInstance | null = null;
+
+  function mountWaline() {
+    const container = document.getElementById('waline');
+    if (!container) return;
+
+    if (walineInstance) {
+      walineInstance.destroy();
+      walineInstance = null;
+    }
+
+    walineInstance = init({
+      el: container,
+      ...walineConfig,
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mountWaline);
+  } else {
+    mountWaline();
+  }
+
+  document.addEventListener('astro:page-load', mountWaline);
+</script>

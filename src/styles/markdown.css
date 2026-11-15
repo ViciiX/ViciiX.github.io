@@ -143,4 +143,8 @@
             text-align: left;
         }
     }
+
+    blockquote footer {
+      text-align: right;
+    }
 }
